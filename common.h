@@ -1,9 +1,9 @@
-#ifndef TENSOR_COMMON_H_
-#define TENSOR_COMMON_H_
+#ifndef CPP_UTILS_COMMON_H_
+#define CPP_UTILS_COMMON_H_
 
+#include <cstdarg>
 #include <string>
 #include <exception>
-#include <cstdarg>
 
 /*!
  * \brief Namespace of the project.
@@ -119,4 +119,4 @@ class FatalError : public Exception {
 }  // namespace PROJECT_NAMESPACE
 #endif  // PROJECT_NAMESPACE
 
-#endif  // TENSOR_COMMON_H_
+#endif  // CPP_UTILS_COMMON_H_
