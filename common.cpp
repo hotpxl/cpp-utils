@@ -121,7 +121,7 @@ std::string FormatStringVariadic(char const* fmt, std::va_list ap_orig) {
     auto n = std::vsnprintf(ptr, size, fmt, ap);
     va_end(ap);
     if (n < 0) {
-      throw std::bad_alloc();
+      throw std::runtime_error("Encoding error");
     } else if (static_cast<std::size_t>(n) < size) {
       return std::string(ptr);
     } else {
