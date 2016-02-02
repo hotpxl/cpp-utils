@@ -132,12 +132,6 @@ std::string FormatStringVariadic(char const* fmt, std::va_list ap_orig) {
   }
 }
 
-Exception::Exception(std::string const& s) : msg_{s} {}
-
-Exception::~Exception() = default;
-
-char const* Exception::what() const noexcept { return msg_.c_str(); }
-
 }  // namespace common
 
 #ifdef PROJECT_NAMESPACE

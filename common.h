@@ -3,7 +3,7 @@
 
 #include <cstdarg>
 #include <string>
-#include <exception>
+#include <stdexcept>
 
 /*!
  * \brief Namespace of the project.
@@ -93,24 +93,14 @@ std::string FormatString(char const*, ...)
 
 std::string FormatStringVariadic(char const*, std::va_list);
 
-class Exception : public std::exception {
- protected:
-  std::string msg_;
-
+class AssertionError : public std::runtime_error {
  public:
-  Exception(std::string const&);
-  ~Exception();
-  char const* what() const noexcept override;
-};  // class Exception
-
-class AssertionError : public Exception {
- public:
-  using Exception::Exception;
+  using std::runtime_error::runtime_error;
 };  // class AssertionError
 
-class FatalError : public Exception {
+class FatalError : public std::runtime_error {
  public:
-  using Exception::Exception;
+  using std::runtime_error::runtime_error;
 };  // class FatalError
 
 }  // namespace common
