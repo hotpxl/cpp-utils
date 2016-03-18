@@ -43,7 +43,7 @@
   COMMON_NAMESPACE::Log(COMMON_NAMESPACE::LogLevel::kDebug, __FILE__, \
                         __LINE__, __func__, fmt)
 #else  // ENABLE_LOG_DEBUG
-#define LOG_DEBUG(fmt...) static_cast<void>(sizeof(fmt))
+#define LOG_DEBUG(fmt...) COMMON_NAMESPACE::Ignore(fmt)
 #endif
 
 #define LIKELY(v) __builtin_expect(static_cast<bool>(v), 1)
@@ -102,6 +102,10 @@ class FatalError : public std::runtime_error {
  public:
   using std::runtime_error::runtime_error;
 };  // class FatalError
+
+void Ignore(...) __attribute__((unused));
+
+inline void Ignore(...) {}
 
 }  // namespace common
 
